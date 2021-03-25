@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GravityManager : MonoBehaviour
 {
-    public float gravity;
-
     public void updateGravity(Vector3 gravity)
     {
         Vector3 gravitySelected = gravity;
