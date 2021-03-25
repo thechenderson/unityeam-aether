@@ -14,31 +14,52 @@ public class ThirdPersonMovement : MonoBehaviour
 
     Vector3 playerVelocity;
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    float groundDistance = 0.4f;
     public LayerMask groundMask;
     bool isGrounded;
+    public float jumpHeight = 2f;
 
+
+    GravityManager gravityManager;
 
     // Update is called once per frame
     void Update()
     {
+        //Find the current gravity value from the gravity manager
+        Vector3 currentGravity = GameObject.FindObjectOfType<GravityManager>().getGravity();
 
-        float currentGravity = FindObjectOfType<GravityManager>().gravity;
+
+        //Project sphere at bottom of character to determine    whether touching the ground
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
+        //If player is on the ground then force player to remain there. (simulate falling until hitting ground)
         if (isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = -2f;
-        }
+        }   
 
+
+        
+        //Get current horizontal and vertical location in space
         float horizontal = Input.GetAxisRaw("Horizontal"); 
         float vertical = Input.GetAxisRaw("Vertical");
         
+        //Assign vertical and horizontal location to a 3 point vector
         Vector3 direction = new Vector3(horizontal, 0f, vertical);
 
-        playerVelocity.y += currentGravity * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        //Check whether jump has been pressed and the player is currently on the ground
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            //Add upwards velocity that works with current gravity
+            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * currentGravity.y);
+        }
 
+        //Make player move as gravity is currently set
+        playerVelocity.y += currentGravity.y * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);   
+
+
+        //Move player in direction camera is facing
         if(direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
