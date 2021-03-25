@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class GravityManager : MonoBehaviour
 {
-    public void updateGravity(Vector3 gravity)
+    Vector3 gravitySelected;
+
+    public void setGravity(Vector3 gravity)
     {
-        Vector3 gravitySelected = gravity;
+        gravitySelected = gravity;
         Physics.gravity = gravitySelected;
         Debug.Log("Gravity Set To: " + gravitySelected);
+    }
+
+    public Vector3 getGravity()
+    {
+    return gravitySelected;
     }
 }

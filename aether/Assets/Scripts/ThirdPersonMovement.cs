@@ -14,30 +14,32 @@ public class ThirdPersonMovement : MonoBehaviour
 
     Vector3 playerVelocity;
     public Transform groundCheck;
-    public float groundDistance = 1f;
+    float groundDistance = 1f;
     public LayerMask groundMask;
     bool isGrounded;
     public float jumpHeight = 2f;
 
 
+    GravityManager gravityManager;
+
     // Update is called once per frame
     void Update()
     {
         //Find the current gravity value from the gravity manager
-        float currentGravity = FindObjectOfType<GravityManager>().gravity;
+        Vector3 currentGravity = GameObject.FindObjectOfType<GravityManager>().getGravity();
 
-        //Project sphere at bottom of character to determine whether touching the ground
+
+        //Project sphere at bottom of character to determine    whether touching the ground
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
-        //Log current velocity, whether player is grounded and current gravity value obtained from gravity manager
-        Debug.Log("Player Velocity: "+playerVelocity + "Grounded: " + isGrounded + "Current Gravity: " + currentGravity);
 
         //If player is on the ground then force player to remain there. (simulate falling until hitting ground)
         if (isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = -2f;
-        }
+        }   
 
+
+        
         //Get current horizontal and vertical location in space
         float horizontal = Input.GetAxisRaw("Horizontal"); 
         float vertical = Input.GetAxisRaw("Vertical");
@@ -49,12 +51,13 @@ public class ThirdPersonMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             //Add upwards velocity that works with current gravity
-            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * currentGravity);
+            playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * currentGravity.y);
         }
 
         //Make player move as gravity is currently set
-        playerVelocity.y += currentGravity * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        playerVelocity.y += currentGravity.y * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);   
+
 
         //Move player in direction camera is facing
         if(direction.magnitude >= 0.1f)
