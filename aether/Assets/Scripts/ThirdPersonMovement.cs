@@ -14,7 +14,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public Transform groundCheck;
 
     //The distance the character is above the ground before being considered as not grounded
-    public float groundDistance = 0.8f;
+    public float groundDistance = 0.3f;
 
     //What layers are considered as ground for the player to be standing on
     public LayerMask groundMask;
