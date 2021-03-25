@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7375665681237101485}
   - component: {fileID: 7931428716776379945}
   m_Layer: 0
-  m_Name: Cube (5)
+  m_Name: Console - Short
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
   - {x: 0, y: -0.6428577}
   - {x: 0, y: -1.3571428}
   - {x: -0.17677838, y: -1.3571427}
-  - {x: 0.0000014156103, y: -0.6428579}
+  - {x: 0.0000014156103, y: -0.64285785}
   - {x: -0.17677656, y: -0.64285684}
   m_Textures2: []
   m_Textures3: []
@@ -489,10 +489,10 @@ MonoBehaviour:
   - {x: -0.70710677, y: 0.70710677, z: 0.00000044277843, w: -1}
   - {x: -0.70710677, y: 0.70710677, z: 0.00000044277843, w: -1}
   - {x: -0.70710677, y: 0.70710677, z: 0.00000006812246, w: -1}
-  - {x: -0.0000005539297, y: 1, z: -0.0000028900686, w: -1}
-  - {x: 0.0000006382238, y: 1, z: -0.0000027455692, w: -1}
-  - {x: 0.0000006382238, y: 1, z: -0.0000027455692, w: -1}
-  - {x: 0.0000018303775, y: 1, z: -0.00000260107, w: -1}
+  - {x: -0.0000005539297, y: 1, z: -0.0000028900683, w: -1}
+  - {x: 0.00000063822387, y: 1, z: -0.0000025769814, w: -1}
+  - {x: 0.00000063822387, y: 1, z: -0.0000025769814, w: -1}
+  - {x: 0.0000018303776, y: 1, z: -0.0000022638944, w: -1}
   m_Colors: []
   m_UnwrapParameters:
     m_HardAngle: 88
@@ -521,11 +521,12 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 84a2e5fbe5acdab45b4d31a61a2893d4, type: 2}
-  - {fileID: 2100000, guid: ed2be0701c452104a97a4e6fb6c34f14, type: 2}
+  - {fileID: 2100000, guid: 7431e337f0f77a542b3a25becf9f146b, type: 2}
+  - {fileID: 2100000, guid: b03e659b8e9efe94fa2af13773ce3946, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -546,6 +547,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &7375665681237101485
 MeshFilter:
   m_ObjectHideFlags: 0
