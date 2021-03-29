@@ -86,7 +86,7 @@ public class ThirdPersonMovement : MonoBehaviour
             {
                 moveSpeed = 3f;
                 //Add upwards velocity that works with current gravity
-                playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f * currentGravity.y);
+                playerVelocity.y = Mathf.Sqrt(jumpHeight * -2f *    currentGravity.y);
                 Debug.Log("playerVelocity.y = " + playerVelocity.y);
                 controller.Move(playerVelocity * Time.deltaTime);    
             }
